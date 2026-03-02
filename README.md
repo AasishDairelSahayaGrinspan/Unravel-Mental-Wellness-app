@@ -7,7 +7,7 @@ Unravel is a community-driven mental wellness companion that blends mood trackin
 - 🗺️ This repository currently hosts planning artifacts (feature list, architecture outline, roadmap).
 - 🤝 Contributors are encouraged to propose architecture plans or UX flows before writing code.
 
-## Why Serenity?
+## Why Unravel?
 - Makes self-care routines approachable with short, evidence-informed practices.
 - Encourages reflection through an expressive journal and mood visualizations.
 - Connects users with grounding techniques and verified crisis resources when they need them most.
