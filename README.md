@@ -27,9 +27,6 @@
 
 =======
 
-**Your quiet place.** 
-A premium mental wellness companion that blends mood tracking, guided practices, and supportive nudges to help users build sustainable self-care habits.
-
 ## ✨ Features
 
 - **Daily Mood Check-ins** – Lightweight prompts capturing mood, energy, and stress levels with optional free-form notes.
@@ -53,7 +50,6 @@ A premium mental wellness companion that blends mood tracking, guided practices,
 | Design System | Custom theme with `AppColors`, `AppTypography`, `AppTheme` |
 | Target Platforms | Android, iOS, Web, Windows, macOS, Linux |
 
->>>>>>> 752f13c88f9b39e78f5b766949d918315c213fb1
 ## 📁 Project Structure
 
 ```
@@ -92,8 +88,8 @@ lib/
 
 ```bash
 # Clone the repository
-git clone https://github.com/AasishDairelSahayaGrinspan/fosshack2026
-cd fosshack2026
+git clone https://github.com/AasishDairelSahayaGrinspan/Unravel-Mental-Wellness-app
+cd Unravel-Mental-Wellness-app
 
 # Install dependencies
 flutter pub get
