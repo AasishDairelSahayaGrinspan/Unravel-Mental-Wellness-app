@@ -7,9 +7,9 @@ import '../theme/app_typography.dart';
 import '../widgets/gradient_background.dart';
 import '../widgets/frosted_glass_card.dart';
 import '../widgets/pill_button.dart';
-import 'main_shell.dart';
+import 'community_onboarding_screen.dart';
 
-/// MindHaven Login Screen
+/// Unravel Login Screen
 /// "Welcome back." — spa-like entry experience.
 /// Frosted glass card with social login, phone + OTP flow.
 class LoginScreen extends StatefulWidget {
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen>
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 600),
         pageBuilder: (context, animation, secondaryAnimation) =>
-            const MainShell(),
+            const CommunityOnboardingScreen(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return FadeTransition(
             opacity: CurvedAnimation(
@@ -139,12 +139,12 @@ class _LoginScreenState extends State<LoginScreen>
                             // Heading
                             Text(
                               'Welcome back.',
-                              style: AppTypography.heroHeading(),
+                              style: AppTypography.heroHeadingC(context),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               'We saved your quiet place.',
-                              style: AppTypography.subtitle(),
+                              style: AppTypography.subtitleC(context),
                             ),
                             const SizedBox(height: 32),
 
@@ -161,9 +161,9 @@ class _LoginScreenState extends State<LoginScreen>
                             PillButton(
                               label: 'Continue with Apple',
                               width: double.infinity,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.apple,
-                                color: AppColors.textPrimary,
+                                color: AppColors.primary(context),
                                 size: 20,
                               ),
                               backgroundColor: Colors.white,
@@ -178,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen>
                               children: [
                                 Expanded(
                                   child: Divider(
-                                    color: AppColors.divider,
+                                    color: AppColors.dividerColor(context),
                                     thickness: 0.8,
                                   ),
                                 ),
@@ -188,12 +188,12 @@ class _LoginScreenState extends State<LoginScreen>
                                   ),
                                   child: Text(
                                     'or',
-                                    style: AppTypography.caption(),
+                                    style: AppTypography.captionC(context),
                                   ),
                                 ),
                                 Expanded(
                                   child: Divider(
-                                    color: AppColors.divider,
+                                    color: AppColors.dividerColor(context),
                                     thickness: 0.8,
                                   ),
                                 ),
@@ -243,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen>
                   // ─── Footer ───
                   Text(
                         'By continuing, you agree to our Terms & Privacy Policy',
-                        style: AppTypography.caption(),
+                        style: AppTypography.captionC(context),
                         textAlign: TextAlign.center,
                       )
                       .animate(delay: const Duration(milliseconds: 500))
@@ -276,23 +276,23 @@ class _LoginScreenState extends State<LoginScreen>
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 16),
-                child: Text('+91', style: AppTypography.uiLabel()),
+                child: Text('+91', style: AppTypography.uiLabelC(context)),
               ),
               Container(
                 width: 1,
                 height: 28,
                 margin: const EdgeInsets.symmetric(horizontal: 12),
-                color: AppColors.divider,
+                color: AppColors.dividerColor(context),
               ),
               Expanded(
                 child: TextField(
                   controller: _phoneController,
                   keyboardType: TextInputType.phone,
-                  style: AppTypography.uiLabel(),
+                  style: AppTypography.uiLabelC(context),
                   decoration: InputDecoration(
                     hintText: 'Mobile number',
                     hintStyle: AppTypography.uiLabel(
-                      color: AppColors.textTertiary,
+                      color: AppColors.tertiary(context),
                     ),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(vertical: 14),
@@ -324,13 +324,13 @@ class _LoginScreenState extends State<LoginScreen>
       key: const ValueKey('otp'),
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('Enter the code we sent you', style: AppTypography.subtitle()),
+        Text('Enter the code we sent you', style: AppTypography.subtitleC(context)),
         const SizedBox(height: 8),
         Text(
           _phoneController.text.isNotEmpty
               ? '+91 ${_phoneController.text}'
               : '',
-          style: AppTypography.caption(),
+          style: AppTypography.captionC(context),
         ),
         const SizedBox(height: 24),
 

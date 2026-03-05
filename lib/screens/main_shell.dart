@@ -3,7 +3,10 @@ import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
 import '../theme/app_typography.dart';
 import 'home_screen.dart';
-import 'placeholder_screen.dart';
+import 'journal_screen.dart';
+import 'community_feed_screen.dart';
+import 'music_screen.dart';
+import 'profile_screen.dart';
 
 /// Main navigation shell with bottom tab bar.
 /// 5 tabs: Home, Journal, Community, Music, Profile
@@ -19,26 +22,10 @@ class _MainShellState extends State<MainShell> {
 
   final List<Widget> _screens = const [
     HomeScreen(),
-    PlaceholderScreen(
-      title: 'Journal',
-      icon: Icons.edit_note_rounded,
-      message: 'Your thoughts, safely kept.',
-    ),
-    PlaceholderScreen(
-      title: 'Community',
-      icon: Icons.people_outline_rounded,
-      message: 'A space to connect.',
-    ),
-    PlaceholderScreen(
-      title: 'Music',
-      icon: Icons.music_note_outlined,
-      message: 'Sounds that heal.',
-    ),
-    PlaceholderScreen(
-      title: 'Profile',
-      icon: Icons.person_outline_rounded,
-      message: 'Your safe space.',
-    ),
+    JournalScreen(),
+    CommunityFeedScreen(),
+    MusicScreen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -56,17 +43,17 @@ class _MainShellState extends State<MainShell> {
           child: _screens[_currentIndex],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
+      bottomNavigationBar: _buildBottomNavBar(context),
     );
   }
 
-  Widget _buildBottomNavBar() {
+  Widget _buildBottomNavBar(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: AppColors.card(context),
         boxShadow: [
           BoxShadow(
-            color: AppColors.shadow,
+            color: AppColors.shadowColor(context),
             blurRadius: 20,
             offset: const Offset(0, -4),
           ),
@@ -78,31 +65,11 @@ class _MainShellState extends State<MainShell> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(0, Icons.home_outlined, Icons.home_rounded, 'Home'),
-              _buildNavItem(
-                1,
-                Icons.edit_note_outlined,
-                Icons.edit_note_rounded,
-                'Journal',
-              ),
-              _buildNavItem(
-                2,
-                Icons.people_outline_rounded,
-                Icons.people_rounded,
-                'Community',
-              ),
-              _buildNavItem(
-                3,
-                Icons.music_note_outlined,
-                Icons.music_note_rounded,
-                'Music',
-              ),
-              _buildNavItem(
-                4,
-                Icons.person_outline_rounded,
-                Icons.person_rounded,
-                'Profile',
-              ),
+              _buildNavItem(context, 0, Icons.home_outlined, Icons.home_rounded, 'Home'),
+              _buildNavItem(context, 1, Icons.edit_note_outlined, Icons.edit_note_rounded, 'Journal'),
+              _buildNavItem(context, 2, Icons.people_outline_rounded, Icons.people_rounded, 'Community'),
+              _buildNavItem(context, 3, Icons.music_note_outlined, Icons.music_note_rounded, 'Music'),
+              _buildNavItem(context, 4, Icons.person_outline_rounded, Icons.person_rounded, 'Profile'),
             ],
           ),
         ),
@@ -111,6 +78,7 @@ class _MainShellState extends State<MainShell> {
   }
 
   Widget _buildNavItem(
+    BuildContext context,
     int index,
     IconData outlinedIcon,
     IconData filledIcon,
@@ -141,22 +109,21 @@ class _MainShellState extends State<MainShell> {
                 key: ValueKey<bool>(isSelected),
                 color: isSelected
                     ? AppColors.softIndigo
-                    : AppColors.textTertiary,
+                    : AppColors.tertiary(context),
                 size: 22,
               ),
             ),
             const SizedBox(height: 4),
             Text(
               label,
-              style:
-                  AppTypography.caption(
-                    color: isSelected
-                        ? AppColors.softIndigo
-                        : AppColors.textTertiary,
-                  ).copyWith(
-                    fontSize: 10,
-                    fontWeight: isSelected ? FontWeight.w500 : FontWeight.w300,
-                  ),
+              style: AppTypography.caption(
+                color: isSelected
+                    ? AppColors.softIndigo
+                    : AppColors.tertiary(context),
+              ).copyWith(
+                fontSize: 10,
+                fontWeight: isSelected ? FontWeight.w500 : FontWeight.w300,
+              ),
             ),
           ],
         ),

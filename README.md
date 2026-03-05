@@ -1,5 +1,6 @@
-# Unravel
+# Unravel (An Open-Source Project)
 
+<<<<<<< HEAD
 **Your quiet place.** A premium mental wellness companion built with Flutter that blends mood tracking, guided practices, and supportive nudges to help users build sustainable self-care habits.
 
 ## ✨ Features
@@ -25,6 +26,35 @@
 | Design System | Custom theme with `AppColors`, `AppTypography`, `AppTheme` |
 | Target Platforms | Android, iOS, Web, Windows, macOS, Linux |
 
+=======
+
+**Your quiet place.** 
+A premium mental wellness companion that blends mood tracking, guided practices, and supportive nudges to help users build sustainable self-care habits.
+
+## ✨ Features
+
+- **Daily Mood Check-ins** – Lightweight prompts capturing mood, energy, and stress levels with optional free-form notes.
+- **Emotion Journal** – Searchable, taggable entries with streak tracking and reflective writing reminders.
+- **Personalized Practice Queue** – AI-assisted recommendations for breathing, meditation, or CBT-inspired exercises.
+- **Guided Audio Sessions** – Downloadable, offline-friendly audio library with timers and ambient soundscapes.
+- **Grounding Toolkit** – Quick-access interventions (5-4-3-2-1 grounding, box breathing, body scan) optimized for touch gestures.
+- **Gratitude & Wins Board** – Visual board for micro-accomplishments to reinforce positive reframing.
+- **Goal & Habit Loops** – SMART goal templates, habit loop builder, and gentle reminder nudges.
+- **Insights Dashboard** – Weekly trend lines, trigger detection, and personalized suggestions from aggregated mood data.
+- **Safety Net** – Region-aware hotline directory, positive scripting, and contact escalation for trusted supporters.
+- **Community Challenges (Opt-in)** – Privacy-conscious group challenges with anonymized leaderboards and badges.
+
+## 🛠️ Tech Stack
+
+| Layer | Stack |
+| --- | --- |
+| Framework | Flutter (Dart), SDK ^3.10.3 |
+| Animations | Lottie, flutter_animate, Reanimated transitions |
+| Typography | Google Fonts (via `google_fonts` package) |
+| Design System | Custom theme with `AppColors`, `AppTypography`, `AppTheme` |
+| Target Platforms | Android, iOS, Web, Windows, macOS, Linux |
+
+>>>>>>> 752f13c88f9b39e78f5b766949d918315c213fb1
 ## 📁 Project Structure
 
 ```

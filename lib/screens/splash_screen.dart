@@ -7,9 +7,9 @@ import '../theme/app_typography.dart';
 import '../widgets/gradient_background.dart';
 import 'login_screen.dart';
 
-/// MindHaven Splash Screen
+/// Unravel Splash Screen
 /// Animated gradient background, floating abstract shapes,
-/// "MindHaven" title and "Your quiet place." subtitle.
+/// "Unravel" title and "Slow down. You're safe here." subtitle.
 /// Auto-navigates to login after a calm 3-second pause.
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -96,7 +96,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
                   // Subtitle
                   Text(
-                        'Your quiet place.',
+                        'Slow down. You\'re safe here.',
                         style: AppTypography.emotionalText(),
                       )
                       .animate(delay: const Duration(milliseconds: 600))

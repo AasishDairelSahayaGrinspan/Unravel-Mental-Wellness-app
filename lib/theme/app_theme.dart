@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
-/// MindHaven Theme
-/// Calm, breathable, premium.
+/// Unravel Theme
+/// Calm, breathable, premium — light and dark.
 class AppTheme {
   AppTheme._();
 
@@ -14,7 +14,6 @@ class AppTheme {
   static const double spacingXL = 32;
   static const double spacingXXL = 48;
 
-  // ─── Outer Padding ───
   static const EdgeInsets screenPadding = EdgeInsets.symmetric(
     horizontal: 24,
     vertical: 16,
@@ -22,7 +21,7 @@ class AppTheme {
 
   // ─── Border Radius ───
   static const double radiusCard = 22;
-  static const double radiusButton = 999; // Pill style
+  static const double radiusButton = 999;
   static const double radiusInput = 16;
   static const double radiusSmall = 12;
 
@@ -35,7 +34,7 @@ class AppTheme {
   static const Curve defaultCurve = Curves.easeInOut;
   static const Curve gentleCurve = Curves.easeOut;
 
-  // ─── Theme Data ───
+  // ─── Light Theme ───
   static ThemeData get lightTheme => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
@@ -51,6 +50,26 @@ class AppTheme {
       onError: AppColors.textOnDark,
     ),
     dividerColor: AppColors.divider,
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
+  );
+
+  // ─── Dark Theme ───
+  static ThemeData get darkTheme => ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.darkBg,
+    colorScheme: ColorScheme.dark(
+      primary: AppColors.softIndigo,
+      secondary: AppColors.sageGreen,
+      error: AppColors.warmCoral,
+      surface: AppColors.darkCard,
+      onPrimary: AppColors.darkTextPrimary,
+      onSecondary: AppColors.darkTextPrimary,
+      onSurface: AppColors.darkTextPrimary,
+      onError: AppColors.darkTextPrimary,
+    ),
+    dividerColor: AppColors.darkDivider,
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
   );

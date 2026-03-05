@@ -3,7 +3,7 @@ import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
 import '../theme/app_typography.dart';
 
-/// A pill-shaped button used throughout MindHaven.
+/// A pill-shaped button used throughout Unravel.
 /// Calm, soft, with gentle tap animation.
 class PillButton extends StatefulWidget {
   final String label;

@@ -4,7 +4,8 @@ import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
 
 /// A frosted glass card with subtle blur and soft shadow.
-/// Used throughout MindHaven for elevated content areas.
+/// Used throughout Unravel for elevated content areas.
+/// Adapts to light/dark mode.
 class FrostedGlassCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
@@ -30,7 +31,7 @@ class FrostedGlassCard extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: AppColors.softShadow,
+        boxShadow: AppColors.cardShadow(context),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
@@ -41,10 +42,10 @@ class FrostedGlassCard extends StatelessWidget {
                 padding ??
                 const EdgeInsets.symmetric(horizontal: 28, vertical: 32),
             decoration: BoxDecoration(
-              color: AppColors.frostedGlass,
+              color: AppColors.frosted(context),
               borderRadius: BorderRadius.circular(borderRadius),
               border: Border.all(
-                color: AppColors.frostedGlassBorder,
+                color: AppColors.frostedBorder(context),
                 width: 1.5,
               ),
             ),

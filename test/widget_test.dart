@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindhaven/main.dart';
+import 'package:unravel/main.dart';
 
 void main() {
   testWidgets('Unravel app smoke test', (WidgetTester tester) async {

@@ -5,11 +5,16 @@ import '../theme/app_theme.dart';
 import '../theme/app_typography.dart';
 import 'frosted_glass_card.dart';
 
-/// Recovery Score Card — large card with animated circular percentage ring.
+/// Recovery Score Card — circular progress ring with motivational quote.
 class RecoveryScoreCard extends StatefulWidget {
   final double score; // 0.0 to 1.0
+  final String? quote;
 
-  const RecoveryScoreCard({super.key, this.score = 0.78});
+  const RecoveryScoreCard({
+    super.key,
+    this.score = 0.78,
+    this.quote,
+  });
 
   @override
   State<RecoveryScoreCard> createState() => _RecoveryScoreCardState();
@@ -20,6 +25,20 @@ class _RecoveryScoreCardState extends State<RecoveryScoreCard>
   late AnimationController _controller;
   late Animation<double> _progressAnimation;
   late Animation<double> _countAnimation;
+
+  static const List<String> _quotes = [
+    'Even storms run out of rain.',
+    'Be gentle with yourself today.',
+    'You are more than your worries.',
+    'Rest is not giving up.',
+    'Healing is not linear.',
+  ];
+
+  String get _displayQuote {
+    if (widget.quote != null) return widget.quote!;
+    final index = DateTime.now().day % _quotes.length;
+    return _quotes[index];
+  }
 
   @override
   void initState() {
@@ -36,7 +55,6 @@ class _RecoveryScoreCardState extends State<RecoveryScoreCard>
       begin: 0,
       end: widget.score * 100,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
-    // Start animation after a brief delay for visual effect
     Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) _controller.forward();
     });
@@ -73,7 +91,6 @@ class _RecoveryScoreCardState extends State<RecoveryScoreCard>
                 ),
               ),
               const SizedBox(width: 16),
-              // Animated Circle
               AnimatedBuilder(
                 animation: _controller,
                 builder: (context, child) {
@@ -101,7 +118,7 @@ class _RecoveryScoreCardState extends State<RecoveryScoreCard>
             ],
           ),
           const SizedBox(height: 16),
-          // Soft motivational bar
+          // Soft progress bar
           ClipRRect(
             borderRadius: BorderRadius.circular(AppTheme.radiusButton),
             child: AnimatedBuilder(
@@ -117,6 +134,13 @@ class _RecoveryScoreCardState extends State<RecoveryScoreCard>
                 );
               },
             ),
+          ),
+          const SizedBox(height: 20),
+          // Inspirational quote — Playfair italic
+          Text(
+            '"$_displayQuote"',
+            style: AppTypography.emotionalText(),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
@@ -141,7 +165,6 @@ class _ScoreRingPainter extends CustomPainter {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2 - 6;
 
-    // Track
     final trackPaint = Paint()
       ..color = trackColor
       ..style = PaintingStyle.stroke
@@ -150,7 +173,6 @@ class _ScoreRingPainter extends CustomPainter {
 
     canvas.drawCircle(center, radius, trackPaint);
 
-    // Progress arc
     final progressPaint = Paint()
       ..color = progressColor
       ..style = PaintingStyle.stroke
