@@ -1,6 +1,5 @@
 # Unravel (An Open-Source Project)
 
-<<<<<<< HEAD
 **Your quiet place.** A premium mental wellness companion built with Flutter that blends mood tracking, guided practices, and supportive nudges to help users build sustainable self-care habits.
 
 ## ✨ Features
