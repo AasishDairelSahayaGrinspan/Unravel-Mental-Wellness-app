@@ -1164,4 +1164,60 @@ class DatabaseService {
       },
     );
   }
+
+  // ──────────────────────────────────────────────
+  // GRATITUDE
+  // ──────────────────────────────────────────────
+
+  Future<void> saveGratitudeEntry({
+    required String userId,
+    required String content,
+    String? category,
+  }) async {
+    await _ensureUserId(userId);
+    final entries = LocalDataService().getGratitudeEntries(userId);
+    entries.insert(0, <String, dynamic>{
+      'id': _newId('gratitude'),
+      'content': content,
+      'category': category ?? 'general',
+      'timestamp': DateTime.now().toIso8601String(),
+    });
+    if (entries.length > 100) {
+      entries.removeRange(100, entries.length);
+    }
+    await LocalDataService().saveGratitudeEntries(userId, entries);
+  }
+
+  Future<List<Map<String, dynamic>>> getGratitudeEntries(
+    String userId, {
+    int? days,
+  }) async {
+    await _ensureUserId(userId);
+    final entries = LocalDataService().getGratitudeEntries(userId);
+    if (days == null) return entries;
+
+    final cutoff = DateTime.now().subtract(Duration(days: days));
+    return entries.where((e) {
+      final ts = e['timestamp'] as String?;
+      if (ts == null) return false;
+      try {
+        final dt = DateTime.parse(ts);
+        return dt.isAfter(cutoff);
+      } catch (_) {
+        return false;
+      }
+    }).toList();
+  }
+
+  // ──────────────────────────────────────────────
+  // DATA SYNC
+  // ──────────────────────────────────────────────
+
+  void syncLocalDataToRemote(String userId) {
+    // Background sync operation - logs local data for potential remote sync
+    developer.log('Sync local data to remote requested for user: $userId',
+        name: _tag);
+    // Implementation can be extended to sync local-only data to Appwrite
+    // For now, this is a placeholder to prevent build errors
+  }
 }

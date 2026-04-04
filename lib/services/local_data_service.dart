@@ -112,6 +112,7 @@ class LocalDataService {
     _root.putIfAbsent('sleepLogs', () => <String, dynamic>{});
     _root.putIfAbsent('breathingLogs', () => <String, dynamic>{});
     _root.putIfAbsent('listenedSongs', () => <String, dynamic>{});
+    _root.putIfAbsent('gratitudeEntries', () => <String, dynamic>{});
     _root.putIfAbsent('communityPosts', () => <dynamic>[]);
     _root.putIfAbsent('activityLogs', () => <String, dynamic>{});
     _root.putIfAbsent('analytics', () => <dynamic>[]);
@@ -474,5 +475,30 @@ class LocalDataService {
     } catch (_) {
       return null;
     }
+  }
+
+  // ──────────────────────────────────────────────
+  // GRATITUDE ENTRIES
+  // ──────────────────────────────────────────────
+
+  List<Map<String, dynamic>> getGratitudeEntries(String userId) {
+    final bucket = _bucketMap('gratitudeEntries');
+    final raw = bucket[userId];
+    if (raw is List) {
+      return raw
+          .whereType<Map>()
+          .map((e) => Map<String, dynamic>.from(e))
+          .toList();
+    }
+    return <Map<String, dynamic>>[];
+  }
+
+  Future<void> saveGratitudeEntries(
+    String userId,
+    List<Map<String, dynamic>> entries,
+  ) async {
+    final bucket = _bucketMap('gratitudeEntries');
+    bucket[userId] = entries;
+    await _persist();
   }
 }
